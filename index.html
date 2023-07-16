@@ -1,1 +1,47 @@
-hello world
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hygiene Record Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Create Hygiene Record Form</h1>
+    <button id="createFormBtn">Create Form</button>
+
+    <script>
+      document.getElementById('createFormBtn').addEventListener('click', function() {
+        google.script.run.createHygieneRecordForm(function(url) {
+          var message = document.createElement('p');
+          message.textContent = 'The form has been created. You can access it at: ';
+          var link = document.createElement('a');
+          link.href = url;
+          link.textContent = url;
+          message.appendChild(link);
+          document.body.appendChild(message);
+        });
+      });
+    </script>
+  </body>
+</html>
+
